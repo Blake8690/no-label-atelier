@@ -1,23 +1,17 @@
-# NO LABEL Atelier
+# NO LABEL ATELIER
 
-Hemsida för NO LABEL Atelier – ett UF-företag.
+Hemsida för NO LABEL ATELIER – ett UF-företag från Stockholm.
 
-Ren HTML/CSS/JS, inga byggsteg. Öppna `index.html` i webbläsaren för att se sidan.
+Ren HTML/CSS/JS, inga byggsteg. Öppna `html/index.html` i webbläsaren.
 
 ## Filer
 
-- `index.html` – allt innehåll (text, sektioner, länkar)
-- `styles.css` – utseende, färger och typsnitt (färgerna ligger överst under `:root`)
-- `script.js` – mobilmeny, scroll-animationer och kontaktformuläret
-- `assets/` – logga och bilder
+- `html/index.html` – Hem (startbild, första kollektionen, plaggen)
+- `html/om-oss.html` – Om oss (teamet, kontakt)
+- `css/style.css` – utseende
+- `js/script.js` – mobilmeny, text som skrivs fram, karusell, tona in, kontaktformulär
 
-## Lägga in produkter
+## Lägga in bilder
 
-I `index.html`, under `<!-- KOLLEKTION -->`: lägg produktbilden i `assets/` och byt ut
-`<div class="product-media tone-1"><span>Bild kommer</span></div>` mot
-`<div class="product-media"><img src="assets/din-bild.jpg" alt="Beskrivning"></div>`.
-Ändra sedan namn, beskrivning och pris.
-
-## Publicera gratis med GitHub Pages
-
-Settings → Pages → *Deploy from a branch* → välj branch och mappen `/ (root)`.
+Skapa mappen `bilder/` bredvid `html/`, lägg bilden där och byt ut
+`<span>Produktbild</span>` mot `<img src="../bilder/din-bild.jpg" alt="Beskrivning">`.
