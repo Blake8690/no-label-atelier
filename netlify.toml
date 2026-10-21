@@ -1,0 +1,9 @@
+[[redirects]]
+  from = "/"
+  to = "/html/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/om-oss.html"
+  to = "/html/om-oss.html"
+  status = 200
