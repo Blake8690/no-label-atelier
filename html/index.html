@@ -94,6 +94,30 @@
     </span>
 </footer>
 
+<!-- Dolda formulär så att Netlify hittar formulären (rör inte) -->
+<form name="nla-bestallning" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="subject">
+    <input name="ordernummer">
+    <input name="namn">
+    <input name="email">
+    <input name="telefon">
+    <input name="adress">
+    <input name="plagg">
+    <input name="delsumma">
+    <input name="frakt">
+    <input name="totalt">
+    <textarea name="meddelande"></textarea>
+    <input name="villkor">
+</form>
+<form name="nla-kontakt" data-netlify="true" netlify-honeypot="bot-field" hidden>
+    <input name="bot-field">
+    <input name="subject">
+    <input name="namn">
+    <input name="email">
+    <textarea name="meddelande"></textarea>
+</form>
+
 <script src="../js/script.js"></script>
 </body>
 </html>

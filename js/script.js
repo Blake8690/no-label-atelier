@@ -1,5 +1,5 @@
 // ===== Inställningar – ändra här =====
-const EPOST = "nolabelatelier121@gmail.com"; // hit kommer beställningar och meddelanden
+const EPOST = "nolabelatelier121@gmail.com"; // används bara som reserv om Netlify inte svarar
 const FRAKT = 59;                            // fraktkostnad i kr (kunden betalar)
 const SWISH_NUMMER = "";                     // fyll i när Swish är klart, t.ex. "123 456 78 90"
 const STORLEKAR = ["S", "M", "L"];
@@ -276,6 +276,19 @@ function renderCheckout() {
             <textarea name="meddelande" rows="2" placeholder="Meddelande (valfritt)"></textarea>
             ${summaryHtml()}
             <p class="note">Du betalar med Swish. När vi har tagit emot beställningen får du betalningsinformation, och vi skickar plagget när betalningen är klar.</p>
+            <details class="terms">
+                <summary>Köpvillkor</summary>
+                <p><strong>Säljare:</strong> NO LABEL ATELIER UF, ett UF-företag från Stockholm. Kontakt: ${EPOST}.</p>
+                <p><strong>Betalning:</strong> Med Swish efter att vi har bekräftat din beställning. Plagget skickas när betalningen är klar.</p>
+                <p><strong>Frakt:</strong> ${FRAKT} kr inom Sverige. Vi skickar alla beställningar – det går inte att hämta upp.</p>
+                <p><strong>Ångerrätt:</strong> Du har 14 dagars ångerrätt från den dag du tar emot plagget. Mejla oss för att ångra köpet. Plagget ska vara oanvänt och i nyskick. Du står för returfrakten.</p>
+                <p><strong>Återbetalning:</strong> Vi betalar tillbaka till ditt Swish-nummer inom 14 dagar efter att du ångrat köpet. Vi får vänta med återbetalningen tills vi har fått tillbaka plagget.</p>
+                <p><strong>Reklamation:</strong> Om plagget är felaktigt har du rätt att reklamera enligt konsumentköplagen. Kontakta oss så snart du upptäcker felet.</p>
+            </details>
+            <label class="check">
+                <input type="checkbox" name="villkor" required>
+                <span>Jag har läst och godkänner köpvillkoren</span>
+            </label>
             <button type="submit" class="btn btn-full">Skicka beställning</button>
         </form>
     `;
@@ -324,17 +337,18 @@ drawerBody.addEventListener("click", (e) => {
     if (act === "close") closeCart();
 });
 
-// ===== Skicka mejl (beställning och kontaktformulär) =====
-// Använder FormSubmit.co. Första gången skickas ett aktiveringsmejl till EPOST som måste bekräftas.
-async function sendEmail(subject, fields) {
-    const res = await fetch("https://formsubmit.co/ajax/" + EPOST, {
+// ===== Skicka till Netlify Forms (beställning och kontaktformulär) =====
+// Formulären heter nla-bestallning och nla-kontakt. Netlify hittar dem via de dolda
+// formulären i html/index.html. Ordrarna syns i Netlify under Forms och kommer som mejl.
+async function sendForm(formName, subject, fields) {
+    const body = new URLSearchParams(Object.assign({ "form-name": formName, subject: subject }, fields));
+    const res = await fetch("/html/index.html", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(Object.assign({ _subject: subject, _template: "table" }, fields)),
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: body.toString(),
     });
-    const json = await res.json();
-    if (!res.ok || String(json.success) !== "true") {
-        throw new Error(json.message || "Kunde inte skicka");
+    if (!res.ok) {
+        throw new Error("Kunde inte skicka");
     }
 }
 
@@ -353,25 +367,26 @@ async function submitOrder(e) {
     const orderNr = "NLA-" + String(Date.now()).slice(-6);
 
     const fields = {
-        Ordernummer: orderNr,
-        Namn: data.namn,
+        ordernummer: orderNr,
+        namn: data.namn,
         email: data.email,
-        Telefon: data.telefon,
-        Adress: data.adress + ", " + data.postnummer + " " + data.ort,
-        Plagg: cart.map((i) => i.antal + " st " + findProduct(i.id).namn + " (" + i.size + ")").join(", "),
-        Delsumma: t.delsumma + " kr",
-        Frakt: t.frakt + " kr",
-        Totalt: t.totalt + " kr",
-        Meddelande: data.meddelande || "–",
+        telefon: data.telefon,
+        adress: data.adress + ", " + data.postnummer + " " + data.ort,
+        plagg: cart.map((i) => i.antal + " st " + findProduct(i.id).namn + " (" + i.size + ")").join(", "),
+        delsumma: t.delsumma + " kr",
+        frakt: t.frakt + " kr",
+        totalt: t.totalt + " kr",
+        meddelande: data.meddelande || "–",
+        villkor: "Godkända",
     };
-    const subject = "Ny beställning " + orderNr;
+    const subject = "NO LABEL – Ny beställning " + orderNr;
 
     button.disabled = true;
     button.textContent = "Skickar…";
 
     let viaMejlprogram = false;
     try {
-        await sendEmail(subject, fields);
+        await sendForm("nla-bestallning", subject, fields);
     } catch {
         openMailApp(subject, fields);
         viaMejlprogram = true;
@@ -424,12 +439,12 @@ if (contactForm) {
         const data = Object.fromEntries(new FormData(contactForm));
         const status = document.getElementById("form-status");
         const button = contactForm.querySelector('button[type="submit"]');
-        const subject = "Meddelande från " + data.namn;
-        const fields = { Namn: data.namn, email: data.epost, Meddelande: data.meddelande };
+        const subject = "NO LABEL – Meddelande från " + data.namn;
+        const fields = { namn: data.namn, email: data.email, meddelande: data.meddelande };
 
         button.disabled = true;
         try {
-            await sendEmail(subject, fields);
+            await sendForm("nla-kontakt", subject, fields);
             contactForm.reset();
             status.textContent = "Tack! Vi hör av oss så snart vi kan.";
         } catch {
