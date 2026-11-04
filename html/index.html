@@ -17,8 +17,9 @@
     <nav class="nav" id="nav">
         <a href="index.html" class="active">Hem</a>
         <a href="om-oss.html">Om oss</a>
+        <a href="om-oss.html#kontakt">Kontakt</a>
     </nav>
-    <a href="om-oss.html#kontakt" class="btn">Kontakta oss</a>
+    <button class="btn cart-btn" id="cart-btn">Varukorg <span class="cart-count" id="cart-count">0</span></button>
     <button class="menu-btn" id="menu-btn" aria-label="Meny" aria-expanded="false">
         <span></span><span></span>
     </button>
@@ -43,7 +44,7 @@
     <section class="container split">
         <div class="fade">
             <h2>Första kollektionen</h2>
-            <p class="text">Tidlösa plagg i noga utvalda material. Ingen logga – kvaliteten syns ändå.</p>
+            <p class="text">Vi är ett UF-företag från Stockholm som gör tidlösa plagg i små serier. Ingen logga – kvaliteten syns ändå.</p>
             <a href="#plaggen" class="link">Se plaggen ›</a>
         </div>
         <div class="image image-large fade">
@@ -58,37 +59,27 @@
             <p class="text">Små serier. När de är slut, är de slut.</p>
         </div>
 
-        <div class="carousel" id="carousel">
-            <article class="product">
-                <div class="image image-product"><span>Produktbild</span></div>
-                <h3>Linneskjorta</h3>
-                <p class="price">— kr</p>
-            </article>
-            <article class="product">
-                <div class="image image-product"><span>Produktbild</span></div>
-                <h3>Byxa</h3>
-                <p class="price">— kr</p>
-            </article>
-            <article class="product">
-                <div class="image image-product"><span>Produktbild</span></div>
-                <h3>Stickad tröja</h3>
-                <p class="price">— kr</p>
-            </article>
-            <article class="product">
-                <div class="image image-product"><span>Produktbild</span></div>
-                <h3>Piké</h3>
-                <p class="price">— kr</p>
-            </article>
-            <article class="product">
-                <div class="image image-product"><span>Produktbild</span></div>
-                <h3>Shorts</h3>
-                <p class="price">— kr</p>
-            </article>
-        </div>
+        <!-- Produkterna skapas från listan PRODUKTER högst upp i js/script.js -->
+        <div class="carousel" id="products"></div>
 
         <div class="arrows">
             <button class="arrow" id="prev" aria-label="Föregående">‹</button>
             <button class="arrow" id="next" aria-label="Nästa">›</button>
+        </div>
+    </section>
+
+    <section class="container section info">
+        <div class="info-card fade">
+            <h3>Storlek S, M, L</h3>
+            <p>Alla plagg finns i tre storlekar.</p>
+        </div>
+        <div class="info-card fade">
+            <h3>Frakt i hela Sverige</h3>
+            <p>Vi skickar alla beställningar. Frakten läggs till i kassan.</p>
+        </div>
+        <div class="info-card fade">
+            <h3>Betala med Swish</h3>
+            <p>Enkelt och tryggt – du swishar när vi bekräftat din order.</p>
         </div>
     </section>
 

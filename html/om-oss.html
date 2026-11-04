@@ -17,8 +17,9 @@
     <nav class="nav" id="nav">
         <a href="index.html">Hem</a>
         <a href="om-oss.html" class="active">Om oss</a>
+        <a href="#kontakt">Kontakt</a>
     </nav>
-    <a href="#kontakt" class="btn">Kontakta oss</a>
+    <button class="btn cart-btn" id="cart-btn">Varukorg <span class="cart-count" id="cart-count">0</span></button>
     <button class="menu-btn" id="menu-btn" aria-label="Meny" aria-expanded="false">
         <span></span><span></span>
     </button>
@@ -28,39 +29,63 @@
 
     <section class="container intro">
         <h1 class="fade">Chosen by those<br>who know the<br>difference.</h1>
-        <p class="text fade">NO LABEL ATELIER är ett UF-företag från Stockholm, startat av fyra vänner. Vi gör plagg där passform och material får tala – inte loggan.</p>
+        <p class="text fade">Vi är NO LABEL ATELIER – ett UF-företag från Stockholm som drivs av fyra vänner. Vi gör tidlösa plagg i små serier, där kvalitet och passform får tala – inte loggan.</p>
     </section>
 
     <section class="container">
-        <div class="image image-wide fade">
-            <!-- Byt ut mot: <img src="../bilder/teamet.jpg" alt="Teamet bakom NO LABEL ATELIER"> -->
-            <span>Bild på teamet</span>
+        <div class="tabs" role="tablist">
+            <button class="tab" role="tab" id="tab-ide" aria-controls="panel-ide" aria-selected="true">Affärsidé</button>
+            <button class="tab" role="tab" id="tab-teamet" aria-controls="panel-teamet" aria-selected="false">Teamet</button>
         </div>
-    </section>
 
-    <section class="container section">
-        <h2 class="fade">Teamet</h2>
-        <div class="team">
-            <a class="member fade" href="https://www.instagram.com/natashamarkovicc/" target="_blank" rel="noopener">
-                <div class="image image-member"><span>Foto</span></div>
-                <h3>Natasha</h3>
-                <p>@natashamarkovicc</p>
-            </a>
-            <a class="member fade" href="https://www.instagram.com/mikaela_stubbing/" target="_blank" rel="noopener">
-                <div class="image image-member"><span>Foto</span></div>
-                <h3>Mikaela</h3>
-                <p>@mikaela_stubbing</p>
-            </a>
-            <a class="member fade" href="https://www.instagram.com/sallyannskogetun/" target="_blank" rel="noopener">
-                <div class="image image-member"><span>Foto</span></div>
-                <h3>Sally-Ann</h3>
-                <p>@sallyannskogetun</p>
-            </a>
-            <a class="member fade" href="https://www.instagram.com/maibjorklundd/" target="_blank" rel="noopener">
-                <div class="image image-member"><span>Foto</span></div>
-                <h3>Mai</h3>
-                <p>@maibjorklundd</p>
-            </a>
+        <div class="panel" id="panel-ide" role="tabpanel" aria-labelledby="tab-ide">
+            <div class="image image-wide">
+                <!-- Byt ut mot: <img src="../bilder/teamet.jpg" alt="Teamet bakom NO LABEL ATELIER"> -->
+                <span>Bild på teamet</span>
+            </div>
+            <div class="idea">
+                <div>
+                    <h3>Vad vi gör</h3>
+                    <p>Tidlösa plagg i små serier – utan synlig logga. Fokus på material, passform och detaljer.</p>
+                </div>
+                <div>
+                    <h3>För vem</h3>
+                    <p>För dig som väljer kvalitet framför märke. Chosen by those who know the difference.</p>
+                </div>
+                <div>
+                    <h3>Hur</h3>
+                    <p>Vi säljer direkt här på hemsidan. Du betalar med Swish och vi skickar plagget hem till dig.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel" id="panel-teamet" role="tabpanel" aria-labelledby="tab-teamet" hidden>
+            <div class="team">
+                <a class="member" href="https://www.instagram.com/natashamarkovicc/" target="_blank" rel="noopener">
+                    <div class="image image-member"><span>Foto</span></div>
+                    <h3>Natasha</h3>
+                    <p class="role">Roll</p>
+                    <p>@natashamarkovicc</p>
+                </a>
+                <a class="member" href="https://www.instagram.com/mikaela_stubbing/" target="_blank" rel="noopener">
+                    <div class="image image-member"><span>Foto</span></div>
+                    <h3>Mikaela</h3>
+                    <p class="role">Roll</p>
+                    <p>@mikaela_stubbing</p>
+                </a>
+                <a class="member" href="https://www.instagram.com/sallyannskogetun/" target="_blank" rel="noopener">
+                    <div class="image image-member"><span>Foto</span></div>
+                    <h3>Sally-Ann</h3>
+                    <p class="role">Roll</p>
+                    <p>@sallyannskogetun</p>
+                </a>
+                <a class="member" href="https://www.instagram.com/maibjorklundd/" target="_blank" rel="noopener">
+                    <div class="image image-member"><span>Foto</span></div>
+                    <h3>Mai</h3>
+                    <p class="role">Roll</p>
+                    <p>@maibjorklundd</p>
+                </a>
+            </div>
         </div>
     </section>
 
@@ -70,12 +95,14 @@
             <p class="text">Frågor, beställningar eller samarbeten.</p>
             <a class="big-link" href="mailto:nolabelatelier121@gmail.com">nolabelatelier121@gmail.com</a>
             <a class="big-link" href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener">@nolabelatelier</a>
+            <p class="contact-person">Mai · <a href="mailto:maibjorklund00@gmail.com">maibjorklund00@gmail.com</a></p>
         </div>
         <form class="form fade" id="form">
             <input type="text" name="namn" placeholder="Namn" required>
             <input type="email" name="epost" placeholder="E-post" required>
             <textarea name="meddelande" placeholder="Meddelande" rows="5" required></textarea>
             <button type="submit" class="btn">Skicka</button>
+            <p class="form-status" id="form-status" role="status"></p>
         </form>
     </section>
 
