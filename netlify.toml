@@ -7,3 +7,8 @@
   from = "/om-oss.html"
   to = "/html/om-oss.html"
   status = 200
+
+[[redirects]]
+  from = "/index.html"
+  to = "/html/index.html"
+  status = 200
