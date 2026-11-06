@@ -10,27 +10,28 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page="home">
 
 <header class="header">
     <a href="index.html" class="logo">NO LABEL<br>ATELIER</a>
     <nav class="nav" id="nav">
-        <a href="index.html" class="active">Hem</a>
-        <a href="om-oss.html">Om oss</a>
-        <a href="om-oss.html#kontakt">Kontakt</a>
+        <a href="index.html" class="active" data-i18n="nav.home">Hem</a>
+        <a href="om-oss.html" data-i18n="nav.about">Om oss</a>
+        <a href="om-oss.html#kontakt" data-i18n="nav.contact">Kontakt</a>
     </nav>
-    <button class="btn cart-btn" id="cart-btn">Varukorg <span class="cart-count" id="cart-count">0</span></button>
-    <button class="menu-btn" id="menu-btn" aria-label="Meny" aria-expanded="false">
+    <button class="lang-btn" id="lang-btn" aria-label="In English">EN</button>
+    <button class="btn cart-btn" id="cart-btn"><span data-i18n="cart.title">Varukorg</span> <span class="cart-count" id="cart-count">0</span></button>
+    <button class="menu-btn" id="menu-btn" aria-label="Meny" data-i18n-aria="menu" aria-expanded="false">
         <span></span><span></span>
     </button>
 </header>
 
 <div class="banner" id="banner">
-    <span class="tag">NYTT</span>
-    <span>Första kollektionen släpps snart</span>
+    <span class="tag" data-i18n="banner.new">NYTT</span>
+    <span data-i18n="banner.text">Första kollektionen släpps snart</span>
     <span class="divider"></span>
-    <a href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener">Följ på Instagram →</a>
-    <button class="banner-close" id="banner-close" aria-label="Stäng">×</button>
+    <a href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener" data-i18n="banner.ig">Följ på Instagram →</a>
+    <button class="banner-close" id="banner-close" aria-label="Stäng" data-i18n-aria="close">×</button>
 </div>
 
 <main>
@@ -43,43 +44,43 @@
 
     <section class="container split">
         <div class="fade">
-            <h2>Första kollektionen</h2>
-            <p class="text">Vi är ett UF-företag från Stockholm som gör tidlösa plagg i små serier. Ingen logga – kvaliteten syns ändå.</p>
-            <a href="#plaggen" class="link">Se plaggen ›</a>
+            <h2 data-i18n="home.title">Första kollektionen</h2>
+            <p class="text" data-i18n="home.text">Vi är ett UF-företag från Stockholm som gör tidlösa posters i små upplagor. Ingen logga – kvaliteten syns ändå.</p>
+            <a href="#posters" class="link" data-i18n="home.link">Se posters ›</a>
         </div>
         <div class="image image-large fade">
             <!-- Byt ut mot: <img src="../bilder/kampanj.jpg" alt="Kampanjbild"> -->
-            <span>Kampanjbild</span>
+            <span data-i18n="home.campaign">Kampanjbild</span>
         </div>
     </section>
 
-    <section class="container section" id="plaggen">
+    <section class="container section" id="posters">
         <div class="section-head fade">
-            <h2>Plaggen</h2>
-            <p class="text">Små serier. När de är slut, är de slut.</p>
+            <h2>Posters</h2>
+            <p class="text" data-i18n="products.text">Små upplagor. När de är slut, är de slut.</p>
         </div>
 
         <!-- Produkterna skapas från listan PRODUKTER högst upp i js/script.js -->
         <div class="carousel" id="products"></div>
 
         <div class="arrows">
-            <button class="arrow" id="prev" aria-label="Föregående">‹</button>
-            <button class="arrow" id="next" aria-label="Nästa">›</button>
+            <button class="arrow" id="prev" aria-label="Föregående" data-i18n-aria="prev">‹</button>
+            <button class="arrow" id="next" aria-label="Nästa" data-i18n-aria="next">›</button>
         </div>
     </section>
 
     <section class="container section info">
         <div class="info-card fade">
-            <h3>Storlek S, M, L</h3>
-            <p>Alla plagg finns i tre storlekar.</p>
+            <h3 data-i18n="info1.title">Storlek S, M, L</h3>
+            <p data-i18n="info1.text">Alla posters finns i tre storlekar.</p>
         </div>
         <div class="info-card fade">
-            <h3>Frakt i hela Sverige</h3>
-            <p>Vi skickar alla beställningar. Frakten läggs till i kassan.</p>
+            <h3 data-i18n="info2.title">Frakt med PostNord</h3>
+            <p data-i18n="info2.text">Vi skickar alla beställningar inom Sverige. Frakten läggs till i kassan.</p>
         </div>
         <div class="info-card fade">
-            <h3>Betala med Swish</h3>
-            <p>Enkelt och tryggt – du swishar när vi bekräftat din order.</p>
+            <h3 data-i18n="info3.title">Betala med Swish</h3>
+            <p data-i18n="info3.text">Enkelt och tryggt – du swishar när vi har bekräftat din order.</p>
         </div>
     </section>
 
@@ -87,7 +88,7 @@
 
 <footer class="footer">
     <strong>NO LABEL ATELIER</strong>
-    <span>Ett UF-företag · Stockholm</span>
+    <span data-i18n="footer.uf">Ett UF-företag · Stockholm</span>
     <span>
         <a href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener">Instagram</a> ·
         <a href="mailto:nolabelatelier121@gmail.com">nolabelatelier121@gmail.com</a>
@@ -103,12 +104,13 @@
     <input name="email">
     <input name="telefon">
     <input name="adress">
-    <input name="plagg">
+    <input name="posters">
     <input name="delsumma">
     <input name="frakt">
     <input name="totalt">
     <textarea name="meddelande"></textarea>
     <input name="villkor">
+    <input name="sprak">
 </form>
 <form name="nla-kontakt" data-netlify="true" netlify-honeypot="bot-field" hidden>
     <input name="bot-field">
@@ -116,6 +118,7 @@
     <input name="namn">
     <input name="email">
     <textarea name="meddelande"></textarea>
+    <input name="sprak">
 </form>
 
 <script src="../js/script.js"></script>

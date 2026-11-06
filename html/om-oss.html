@@ -4,23 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Om oss – NO LABEL ATELIER</title>
-    <meta name="description" content="NO LABEL ATELIER är ett UF-företag från Stockholm, startat av fyra vänner.">
+    <meta name="description" content="NO LABEL ATELIER är ett UF-företag från Stockholm som gör tidlösa posters i små upplagor.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body data-page="about">
 
 <header class="header">
     <a href="index.html" class="logo">NO LABEL<br>ATELIER</a>
     <nav class="nav" id="nav">
-        <a href="index.html">Hem</a>
-        <a href="om-oss.html" class="active">Om oss</a>
-        <a href="#kontakt">Kontakt</a>
+        <a href="index.html" data-i18n="nav.home">Hem</a>
+        <a href="om-oss.html" class="active" data-i18n="nav.about">Om oss</a>
+        <a href="#kontakt" data-i18n="nav.contact">Kontakt</a>
     </nav>
-    <button class="btn cart-btn" id="cart-btn">Varukorg <span class="cart-count" id="cart-count">0</span></button>
-    <button class="menu-btn" id="menu-btn" aria-label="Meny" aria-expanded="false">
+    <button class="lang-btn" id="lang-btn" aria-label="In English">EN</button>
+    <button class="btn cart-btn" id="cart-btn"><span data-i18n="cart.title">Varukorg</span> <span class="cart-count" id="cart-count">0</span></button>
+    <button class="menu-btn" id="menu-btn" aria-label="Meny" data-i18n-aria="menu" aria-expanded="false">
         <span></span><span></span>
     </button>
 </header>
@@ -29,32 +30,28 @@
 
     <section class="container intro">
         <h1 class="fade">Chosen by those<br>who know the<br>difference.</h1>
-        <p class="text fade">Vi är NO LABEL ATELIER – ett UF-företag från Stockholm som drivs av fyra vänner. Vi gör tidlösa plagg i små serier, där kvalitet och passform får tala – inte loggan.</p>
+        <p class="text fade" data-i18n="about.text">Vi är NO LABEL ATELIER – ett UF-företag från Stockholm som drivs av fyra vänner. Vi gör tidlösa posters i små upplagor, där motivet och kvaliteten får tala – inte loggan.</p>
     </section>
 
     <section class="container">
         <div class="tabs" role="tablist">
-            <button class="tab" role="tab" id="tab-ide" aria-controls="panel-ide" aria-selected="true">Affärsidé</button>
-            <button class="tab" role="tab" id="tab-teamet" aria-controls="panel-teamet" aria-selected="false">Teamet</button>
+            <button class="tab" role="tab" id="tab-ide" aria-controls="panel-ide" aria-selected="true" data-i18n="tab.idea">Affärsidé</button>
+            <button class="tab" role="tab" id="tab-teamet" aria-controls="panel-teamet" aria-selected="false" data-i18n="tab.team">Teamet</button>
         </div>
 
         <div class="panel" id="panel-ide" role="tabpanel" aria-labelledby="tab-ide">
-            <div class="image image-wide">
-                <!-- Byt ut mot: <img src="../bilder/teamet.jpg" alt="Teamet bakom NO LABEL ATELIER"> -->
-                <span>Bild på teamet</span>
-            </div>
             <div class="idea">
-                <div>
-                    <h3>Vad vi gör</h3>
-                    <p>Tidlösa plagg i små serier – utan synlig logga. Fokus på material, passform och detaljer.</p>
+                <div class="idea-card">
+                    <h3 data-i18n="idea1.title">Vad vi gör</h3>
+                    <p data-i18n="idea1.text">Tidlösa posters i små upplagor – utan synlig logga. Fokus på motiv, papper och tryck.</p>
                 </div>
-                <div>
-                    <h3>För vem</h3>
-                    <p>För dig som väljer kvalitet framför märke. Chosen by those who know the difference.</p>
+                <div class="idea-card">
+                    <h3 data-i18n="idea2.title">För vem</h3>
+                    <p data-i18n="idea2.text">För dig som väljer kvalitet framför märke. Chosen by those who know the difference.</p>
                 </div>
-                <div>
-                    <h3>Hur</h3>
-                    <p>Vi säljer direkt här på hemsidan. Du betalar med Swish och vi skickar plagget hem till dig.</p>
+                <div class="idea-card">
+                    <h3 data-i18n="idea3.title">Hur</h3>
+                    <p data-i18n="idea3.text">Vi säljer direkt här på hemsidan. Du betalar med Swish och vi skickar postern hem till dig med PostNord.</p>
                 </div>
             </div>
         </div>
@@ -62,27 +59,23 @@
         <div class="panel" id="panel-teamet" role="tabpanel" aria-labelledby="tab-teamet" hidden>
             <div class="team">
                 <a class="member" href="https://www.instagram.com/natashamarkovicc/" target="_blank" rel="noopener">
-                    <div class="image image-member"><span>Foto</span></div>
                     <h3>Natasha</h3>
-                    <p class="role">Roll</p>
+                    <p class="role" data-i18n="role">Roll</p>
                     <p>@natashamarkovicc</p>
                 </a>
                 <a class="member" href="https://www.instagram.com/mikaela_stubbing/" target="_blank" rel="noopener">
-                    <div class="image image-member"><span>Foto</span></div>
                     <h3>Mikaela</h3>
-                    <p class="role">Roll</p>
+                    <p class="role" data-i18n="role">Roll</p>
                     <p>@mikaela_stubbing</p>
                 </a>
                 <a class="member" href="https://www.instagram.com/sallyannskogetun/" target="_blank" rel="noopener">
-                    <div class="image image-member"><span>Foto</span></div>
                     <h3>Sally-Ann</h3>
-                    <p class="role">Roll</p>
+                    <p class="role" data-i18n="role">Roll</p>
                     <p>@sallyannskogetun</p>
                 </a>
                 <a class="member" href="https://www.instagram.com/maibjorklundd/" target="_blank" rel="noopener">
-                    <div class="image image-member"><span>Foto</span></div>
                     <h3>Mai</h3>
-                    <p class="role">Roll</p>
+                    <p class="role" data-i18n="role">Roll</p>
                     <p>@maibjorklundd</p>
                 </a>
             </div>
@@ -91,17 +84,17 @@
 
     <section class="container section split contact" id="kontakt">
         <div class="fade">
-            <h2>Kontakt</h2>
-            <p class="text">Frågor, beställningar eller samarbeten.</p>
+            <h2 data-i18n="contact.title">Kontakt</h2>
+            <p class="text" data-i18n="contact.text">Frågor, beställningar eller samarbeten.</p>
             <a class="big-link" href="mailto:nolabelatelier121@gmail.com">nolabelatelier121@gmail.com</a>
             <a class="big-link" href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener">@nolabelatelier</a>
             <p class="contact-person">Mai · <a href="mailto:maibjorklund00@gmail.com">maibjorklund00@gmail.com</a></p>
         </div>
         <form class="form fade" id="form">
-            <input type="text" name="namn" placeholder="Namn" required>
-            <input type="email" name="email" placeholder="E-post" required>
-            <textarea name="meddelande" placeholder="Meddelande" rows="5" required></textarea>
-            <button type="submit" class="btn">Skicka</button>
+            <input type="text" name="namn" placeholder="Namn" data-i18n-placeholder="form.name" required>
+            <input type="email" name="email" placeholder="E-post" data-i18n-placeholder="form.email" required>
+            <textarea name="meddelande" placeholder="Meddelande" data-i18n-placeholder="form.message" rows="5" required></textarea>
+            <button type="submit" class="btn" data-i18n="form.send">Skicka</button>
             <p class="form-status" id="form-status" role="status"></p>
         </form>
     </section>
@@ -110,7 +103,7 @@
 
 <footer class="footer">
     <strong>NO LABEL ATELIER</strong>
-    <span>Ett UF-företag · Stockholm</span>
+    <span data-i18n="footer.uf">Ett UF-företag · Stockholm</span>
     <span>
         <a href="https://www.instagram.com/nolabelatelier/" target="_blank" rel="noopener">Instagram</a> ·
         <a href="mailto:nolabelatelier121@gmail.com">nolabelatelier121@gmail.com</a>
