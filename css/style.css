@@ -654,14 +654,10 @@ h2 {
     margin-top: 0;
 }
 
-.contact-person {
-    margin-top: 28px;
-    color: #666;
-}
-
-.contact-person a {
-    color: #1a1a1a;
-    font-weight: 600;
+.contact-label {
+    margin: 28px 0 0;
+    color: #777;
+    font-size: 14px;
 }
 
 .form-status {

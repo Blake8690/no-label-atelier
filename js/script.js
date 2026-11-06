@@ -4,11 +4,12 @@ const FRAKT = 59;                            // fraktkostnad i kr (kunden betala
 const SWISH_NUMMER = "";                     // fyll i när Swish är klart, t.ex. "123 456 78 90"
 const STORLEKAR = ["30×40", "50×70"];       // poster-storlekar i cm
 
-// Produkterna. Bild: lägg filen i mappen bilder/ och skriv t.ex. "../bilder/poster-01.jpg"
+// Produkterna. Bild: lägg filen i mappen bilder/ och skriv t.ex. "../bilder/poster-1.jpg"
+// id syns i ordern ni får, så att ni vet vilken poster kunden valt
 const PRODUKTER = [
-    { id: "poster-01", namn: "Poster 01", pris: 350, bild: "" },
-    { id: "poster-02", namn: "Poster 02", pris: 350, bild: "" },
-    { id: "poster-03", namn: "Poster 03", pris: 350, bild: "" },
+    { id: "poster-1", namn: "Poster", pris: 350, bild: "" },
+    { id: "poster-2", namn: "Poster", pris: 350, bild: "" },
+    { id: "poster-3", namn: "Poster", pris: 350, bild: "" },
 ];
 
 // ===== Texter på svenska och engelska =====
@@ -53,6 +54,8 @@ const TEXTER = {
         "role": "Roll",
         "contact.title": "Kontakt",
         "contact.text": "Frågor, beställningar eller samarbeten.",
+        "contact.general": "Generella frågor",
+        "contact.specific": "Mer specifika frågor – Mai",
         "form.name": "Namn",
         "form.email": "E-post",
         "form.message": "Meddelande",
@@ -143,6 +146,8 @@ const TEXTER = {
         "role": "Role",
         "contact.title": "Contact",
         "contact.text": "Questions, orders or collaborations.",
+        "contact.general": "General questions",
+        "contact.specific": "More specific questions – Mai",
         "form.name": "Name",
         "form.email": "Email",
         "form.message": "Message",
@@ -617,7 +622,7 @@ async function submitOrder(e) {
         email: data.email,
         telefon: data.telefon,
         adress: data.adress + ", " + data.postnummer + " " + data.ort,
-        posters: cart.map((i) => i.antal + " st " + findProduct(i.id).namn + " (" + i.size + " cm)").join(", "),
+        posters: cart.map((i) => i.antal + " st " + i.id + " (" + i.size + " cm)").join(", "),
         delsumma: sum.delsumma + " kr",
         frakt: sum.frakt + " kr",
         totalt: sum.totalt + " kr",
