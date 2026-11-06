@@ -532,8 +532,8 @@ h2 {
 }
 
 .size {
-    width: 48px;
     height: 40px;
+    padding: 0 16px;
     border: 1px solid #e2e2e0;
     border-radius: 999px;
     background: #fff;

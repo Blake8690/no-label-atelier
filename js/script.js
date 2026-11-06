@@ -2,7 +2,7 @@
 const EPOST = "nolabelatelier121@gmail.com"; // används bara som reserv om Netlify inte svarar
 const FRAKT = 59;                            // fraktkostnad i kr (kunden betalar)
 const SWISH_NUMMER = "";                     // fyll i när Swish är klart, t.ex. "123 456 78 90"
-const STORLEKAR = ["S", "M", "L"];
+const STORLEKAR = ["30×40", "50×70"];       // poster-storlekar i cm
 
 // Produkterna. Bild: lägg filen i mappen bilder/ och skriv t.ex. "../bilder/poster-01.jpg"
 const PRODUKTER = [
@@ -33,8 +33,8 @@ const TEXTER = {
         "home.link": "Se posters ›",
         "home.campaign": "Kampanjbild",
         "products.text": "Små upplagor. När de är slut, är de slut.",
-        "info1.title": "Storlek S, M, L",
-        "info1.text": "Alla posters finns i tre storlekar.",
+        "info1.title": "30×40 och 50×70 cm",
+        "info1.text": "Alla posters finns i två storlekar.",
         "info2.title": "Frakt med PostNord",
         "info2.text": "Vi skickar alla beställningar inom Sverige. Frakten läggs till i kassan.",
         "info3.title": "Betala med Swish",
@@ -122,8 +122,8 @@ const TEXTER = {
         "home.link": "See the posters ›",
         "home.campaign": "Campaign image",
         "products.text": "Small editions. When they're gone, they're gone.",
-        "info1.title": "Sizes S, M, L",
-        "info1.text": "Every poster comes in three sizes.",
+        "info1.title": "30×40 and 50×70 cm",
+        "info1.text": "Every poster comes in two sizes.",
         "info2.title": "Shipping with PostNord",
         "info2.text": "We ship all orders within Sweden. Shipping is added at checkout.",
         "info3.title": "Pay with Swish",
@@ -370,7 +370,7 @@ let cart = loadCart();
 function loadCart() {
     try {
         const saved = JSON.parse(localStorage.getItem("nla-varukorg")) || [];
-        return saved.filter((item) => findProduct(item.id));
+        return saved.filter((item) => findProduct(item.id) && STORLEKAR.includes(item.size));
     } catch {
         return [];
     }
@@ -484,7 +484,7 @@ function renderCart() {
                 <div class="cart-thumb">${imageHtml(p)}</div>
                 <div>
                     <p class="cart-name">${p.namn}</p>
-                    <p class="cart-meta">${t("cart.size")} ${item.size}</p>
+                    <p class="cart-meta">${t("cart.size")} ${item.size} cm</p>
                     <div class="qty">
                         <button data-act="minus" aria-label="${t("cart.fewer")}">−</button>
                         <span>${item.antal}</span>
@@ -615,7 +615,7 @@ async function submitOrder(e) {
         email: data.email,
         telefon: data.telefon,
         adress: data.adress + ", " + data.postnummer + " " + data.ort,
-        posters: cart.map((i) => i.antal + " st " + findProduct(i.id).namn + " (" + i.size + ")").join(", "),
+        posters: cart.map((i) => i.antal + " st " + findProduct(i.id).namn + " (" + i.size + " cm)").join(", "),
         delsumma: sum.delsumma + " kr",
         frakt: sum.frakt + " kr",
         totalt: sum.totalt + " kr",
